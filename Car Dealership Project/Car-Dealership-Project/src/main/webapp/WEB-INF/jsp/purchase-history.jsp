@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,36 +13,11 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous" rel="canonical"
-	href="https://getbootstrap.com/docs/4.4/examples/cover/"
-	href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-	
-	<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-
 
 <title>Brads New and Used Cars!</title>
 </head>
-<body >
+<body>
 	<h1>Brads New and Used Cars!</h1>
 	<header>
 		<div class="collapse bg-dark" id="navbarHeader">
@@ -58,8 +32,8 @@
 					<div class="col-sm-4 offset-md-1 py-4">
 						<h4 class="text-white">History and Services</h4>
 						<ul class="list-unstyled">
-							<li><a href="#" class="text-white">See all transactions</a></li>
-							<li><a href="#" class="text-white">Search inventory</a></li>
+							<li><a href="/search" class="text-white">Search inventory</a></li>
+
 						</ul>
 					</div>
 				</div>
@@ -90,71 +64,51 @@
 			</div>
 		</div>
 	</header>
-	<main role="main" class="inner cover">
 
-		<form:form method="post"  action="sign-up" modelAttribute="user">
+	<main>
 
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputFirstName">First Name</label>
-					<form:input type="text" class="form-control" id="inputFirstName"
-						path="firstName" />
-				</div>
-				<div class="form-group col-md-6">
-					<label for="inputLastName">Last Name</label>
-					<form:input type="text" class="form-control" id="inputLastName"
-						path="lastName" />
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
+					<h1 class="fw-light">Sold Cars</h1>
+					<p class="lead text-muted">Click a button to return to
+						inventory.</p>
+					<p>
+						<a href="/index-used" class="btn btn-secondary my-2">Used
+							Cars!</a> <a href="/index-all" class="btn btn-primary my-2">All
+							Cars!</a> <a href="/index-new" class="btn btn-primary my-2">New
+							Cars!</a>
+					</p>
 				</div>
 			</div>
+		</section>
+		<!-- start of cards -->
 
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<c:forEach items="${buyerlist}" var="buyerList">
+						<div class="col">
+							<div class="card shadow-sm">
+								<img src="${buyerList.car.imagePath}" alt="Image Not Found"
+									width="100%" height="225" />
 
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="age">age</label>
-					<form:input class="form-control" path="age" />
-				</div>
-				<div class="form-group col-md-6">
-					<label for="inputEmail4">Email</label>
-					<form:input type="email" class="form-control" id="inputEmail4"
-						path="email" />
-				</div>
-			</div>
-
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputPassword4">Password</label>
-					<form:input type="password" class="form-control"
-						id="inputPassword4" path="password" />
+								<div class="card-body">
+									<p class="card-text">${buyerList.firstName}
+										${buyerList.lastName}</p>
+									<p class="card-text">${buyerList.car.make}
+										${buyerList.car.model} ${buyerList.car.price}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group"></div>
+										<small class="text-muted">9 mins</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="inputAddress">Street</label>
-				<form:input type="text" class="form-control" id="inputAddress"
-					placeholder="1234 Main St" path="address.streetName" />
-			</div>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputCity">City</label>
-					<form:input type="text" class="form-control" id="inputCity"
-						path="address.city" />
-				</div>
-				<div class="form-group col-md-4">
-					<label for="inputState">State</label>
-					<form:input type="text" id="inputState" class="form-control"
-						placeholder="Use abreviated State format e.g. UT"
-						path="address.state" />
-				</div>
-				<div class="form-group col-md-2">
-					<label for="inputZip">Zip</label>
-					<form:input type="text" class="form-control" id="inputZip"
-						path="address.zip" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="form-check"></div>
-			</div>
-			<button type="submit" class="btn btn-primary">Sign up</button>
-		</form:form>
+		</div>
 
 	</main>
 

@@ -10,13 +10,14 @@ public class Car {
 	private boolean isElectric, isUsed;
 	private double price, miles;
 	private LocalDate dealershipPurchaseDate, dateSold;
-	private int dealershipID;
+	private Integer dealershipId;
+	private User buyer = new User(); 
 	public Car() {
 	}
 
 	public Car(String make, String model, String transMissonType, String driveTrain, String color, String description,
-			int dealershipID, int year, int numberOfDoors, boolean isElectric, boolean isUsed, double price,
-			double miles, String imagePath, LocalDate dealershipPurchaseDate, LocalDate dateSold) {
+			Integer dealershipID, int year, int numberOfDoors, boolean isElectric, boolean isUsed, double price,
+			double miles, String imagePath, LocalDate dealershipPurchaseDate, LocalDate dateSold,User buyer) {
 		
 		this.make = make;
 		this.model = model;
@@ -24,7 +25,7 @@ public class Car {
 		this.driveTrain = driveTrain;
 		this.color = color;
 		this.description = description;
-		this.dealershipID = dealershipID;
+		this.dealershipId = dealershipID;
 		this.year = year;
 		this.numberOfDoors = numberOfDoors;
 		this.isElectric = isElectric;
@@ -34,6 +35,7 @@ public class Car {
 		this.imagePath = imagePath; 
 		this.dealershipPurchaseDate = dealershipPurchaseDate; 
 		this.dateSold = dateSold; 
+		this.buyer = buyer; 
 	}
 
 	public String getMake() {
@@ -156,12 +158,20 @@ public class Car {
 		this.dateSold = dateSold;
 	}
 
-	public int getDealershipID() {
-		return dealershipID;
+	public Integer getDealershipId() {
+		return dealershipId;
 	}
 
-	public void setDealershipID(int dealershipID) {
-		this.dealershipID = dealershipID;
+	public void setDealershipId(Integer dealershipId) {
+		this.dealershipId = dealershipId;
+	}
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
 	}
 
 	

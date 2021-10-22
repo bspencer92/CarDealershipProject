@@ -30,9 +30,9 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">History and Services</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">See all transactions</a></li>
-            <li><a href="#" class="text-white">Search inventory</a></li>
-            <li><a href="/sign-up" class="text-white">Create an account to purchase a car</a></li>
+            <li><a href="/purchase-history" class="text-white">See all transactions</a></li>
+            <li><a href="/search" class="text-white">Search inventory</a></li>
+            <li><a href="/index" class="text-white">Home</a></li>
           </ul>
         </div>
       </div>

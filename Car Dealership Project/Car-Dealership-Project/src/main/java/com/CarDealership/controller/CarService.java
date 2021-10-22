@@ -10,6 +10,7 @@ import java.util.Arrays;
 import org.springframework.stereotype.Service;
 
 import com.CarDealership.Entity.Car;
+import com.CarDealership.Entity.User;
 
 @Service
 public class CarService  {
@@ -17,73 +18,98 @@ public class CarService  {
 	private LocalDate purchaseDate;
 	private LocalDate sellDate;  
 	//private Date date = new Date(); 
-	private int dealershipID = 1000; 
+	private Integer serviceshipID = 1000; 
 	private LocalDate currentDate = LocalDate.now();
 	private final int auctionDays = 120; 
 	private ArrayList<Car> auctionList = new ArrayList<Car>(); 
+	private User buyer = new User(); 
 	///private int daysFromPurchase = Period.between(purchaseDate, currentDate).getDays(); 
 	
 	
 	
 	private Car car1000 = new Car("Ford", "Mustang", "6-Spead Mannual", "Rear-Wheel Drive", "Blue", "New 2021 Ford Mustang with all the features!", 
-			dealershipID, 2021, 2, false, false, 75000, 0.0, 
+			serviceshipID++, 2021, 2, false, false, 75000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ytUxOm8vi0BtP0wIvS7TsAHaEK%26pid%3DApi&f=1",
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 		
 	
 	private Car car1001 = new Car("Ford", "Focus", "Automatic", "Front-Wheel Drive", "Blue", "New 2021 Ford Focus! Its loaded with all the upgrades!", 
-			dealershipID++, 2021, 4, false, false, 50000, 0.0, 
+			serviceshipID++, 2021, 4, false, false, 50000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4Ens08_Bz9qQgWO6_i80gAHaEA%26pid%3DApi&f=1",
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1002 = new Car("Nissan", "Versa", "Automatic", "Front-Wheel Drive", "Blue", "Used 2009 Nissan Versa! Low Miles and great condition!", 
-			dealershipID++, 2009, 4, false, true, 3500, 85000.09, 
+			serviceshipID++, 2009, 4, false, true, 3500, 85000.09, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.I0prcgxa6wuoLQS1UBqQ8AHaGF%26pid%3DApi&f=1",
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1003 = new Car("Nissan", "Titan", "Automatic", "4-Wheel Drive", "Gray", "New 2021 Nissan Titan comes with off road 4x4 package!", 
-			dealershipID++,2021, 4, false, false, 60000, 0.0, 
+			serviceshipID++,2021, 4, false, false, 60000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.XYpjd5LghWrSy8J7Ra2O_AHaEj%26pid%3DApi&f=1", 
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1004 = new Car("Chevy", "Volt", "Automatic", "All-Wheel Drive", "White", "New 2021 Chevy volt Hybird!", 
-			dealershipID++, 2021, 4, true, false, 45000, 0.0, 
+			serviceshipID++, 2021, 4, true, false, 45000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.-qzVYaiGQznf3rCqyYJhuAHaE8%26pid%3DApi&f=1",
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);;
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);;
 	
 	private Car car1005 = new Car("Ford", "F350", "Automatic", "4-Wheel Drive", "Blue", "New 2021 F350 super-duty with 4-wheel drive!", 
-			dealershipID++, 2021, 3, false, false, 82000, 0.0, 
+			serviceshipID++, 2021, 3, false, false, 82000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.GzuDDwwuaD7bedr2pAGdYgHaFj%26pid%3DApi&f=1", 
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1006 = new Car("Dodge", "Dart", "Automatic", "Front-Wheel Drive", "Red", "New 2021 Dodge Dart!", 
-			dealershipID++, 2021, 4, false, false, 30000, 0.0, 
+			serviceshipID++, 2021, 4, false, false, 30000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GDQAh4vqLYtzFKqsupmNBgHaEK%26pid%3DApi&f=1",
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1007 = new Car("Dodge", "Charger", "Automatic", "Rear-Wheel Drive", "Orange", "New 2021 Dodge Charger!", 
-			dealershipID++, 2021, 2, false, false, 55000, 0.0, 
+			serviceshipID++, 2021, 2, false, false, 55000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.IHEGlWhE2gnh2Dd9_tkn5wHaEp%26pid%3DApi&f=1", 
-			LocalDate.of(2021, Month.OCTOBER, 11), sellDate);
+			LocalDate.of(2021, Month.OCTOBER, 11), sellDate, buyer);
 	
 	private Car car1008 = new Car("Chevy", "Duramax", "Automatic", "4-Wheel Drive", "White", "New 2021 2500HD Duramax!", 
-			dealershipID++, 2021, 4, false, false, 78000, 0.0, 
+			serviceshipID++, 2021, 4, false, false, 78000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.HQ83hoQeAaflQAvS68no7gHaEY%26pid%3DApi&f=1"
-			, LocalDate.of(2021, Month.JANUARY, 15), sellDate);
+			, LocalDate.of(2021, Month.JANUARY, 15), sellDate, buyer);
 	
 	private Car car1009 = new Car("Chevy", "Duramax", "Automatic", "4-Wheel Drive", "Grey", "New 2021 3500HD Duramax!", 
-			dealershipID++, 2021, 4, false, false, 84000, 0.0, 
+			serviceshipID++, 2021, 4, false, false, 84000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.br0TxHv487jI8hUEk8f2jAHaEK%26pid%3DApi&f=1"
-			, LocalDate.of(2021, Month.FEBRUARY, 5), sellDate);
+			, LocalDate.of(2021, Month.FEBRUARY, 5), sellDate, buyer);
 	
 	private Car car1010 = new Car("Chevy", "Silverado", "Automatic", "4-Wheel Drive", "Grey", "New 2021 2500 Silverado!", 
-			dealershipID++, 2021, 4, false, false, 69000, 0.0, 
+			serviceshipID++, 2021, 4, false, false, 69000, 0.0, 
 			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.yfTO-kLf9gJzJI_lf-6wMAHaEK%26pid%3DApi&f=1"
-			, LocalDate.of(2021, Month.JANUARY, 1), sellDate);
+			, LocalDate.of(2021, Month.JANUARY, 1), sellDate, buyer);
 
 	
 	private ArrayList<Car> carInventory = new ArrayList<>(Arrays.asList(car1000, car1001, car1002, car1003, car1004, car1005, car1006, 
 			car1007, car1008, car1009, car1010)); 
+	
+	private ArrayList<User> buyerList = new ArrayList<User>(); 
+	
+	public void saveBuyer(User user, Integer dealershipId) {
+		
+		for(int i =0; i < carInventory.size(); i++) {
+			if(carInventory.get(i).getDealershipId() == dealershipId.intValue()) {
+				user.setCar(carInventory.get(i));
+				carInventory.remove(i); 
+			}
+		}
+		buyerList.add(user); 
+
+	}
+	
+	public ArrayList<Car> createSearchList(String model){
+		ArrayList<Car> searchList = new ArrayList<Car>(); 
+		for(int i = 0; i < carInventory.size(); i++) {
+			if(model.equals(carInventory.get(i).getModel())) {
+				searchList.add(carInventory.get(i)); 
+			}
+		}
+		return searchList; 
+	}
 	
 	public ArrayList<Car> usedList(ArrayList<Car> carInventory){
 		ArrayList<Car> usedArrList = new ArrayList<Car>(); 
@@ -117,14 +143,17 @@ public class CarService  {
 		return auctionList; 
 	}
 	
-	public Car selectCar(int dealershipId) {
+	public Car selectCar(Integer dealershipId) {
+		System.out.println(dealershipId+" inside method");
 		Car car = new Car(); 
 		for(int i = 0; i < carInventory.size(); i++) {
-			if(carInventory.get(i).getDealershipID() == dealershipId) {
+			if(carInventory.get(i).getDealershipId() == dealershipId.intValue()) {
 				car = carInventory.get(i); 
 			}
 		}
+		System.out.println("end of method"+ car.getColor());
 		return car; 
+		
 	}
 
 	public LocalDate getPurchaseDate() {
@@ -143,12 +172,12 @@ public class CarService  {
 		this.sellDate = sellDate;
 	}
 
-	public int getDealershipID() {
-		return dealershipID;
+	public Integer getDealershipID() {
+		return serviceshipID;
 	}
 
-	public void setDealershipID(int dealershipID) {
-		this.dealershipID = dealershipID;
+	public void setDealershipID(Integer dealershipID) {
+		this.serviceshipID = dealershipID;
 	}
 
 	public Car getCar1000() {
@@ -266,6 +295,30 @@ public class CarService  {
 
 	public void setAuctionList(ArrayList<Car> auctionList) {
 		this.auctionList = auctionList;
+	}
+
+	public Integer getServiceshipID() {
+		return serviceshipID;
+	}
+
+	public void setServiceshipID(Integer serviceshipID) {
+		this.serviceshipID = serviceshipID;
+	}
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
+	}
+
+	public ArrayList<User> getBuyerList() {
+		return buyerList;
+	}
+
+	public void setBuyerList(ArrayList<User> buyerList) {
+		this.buyerList = buyerList;
 	}
 	
 	

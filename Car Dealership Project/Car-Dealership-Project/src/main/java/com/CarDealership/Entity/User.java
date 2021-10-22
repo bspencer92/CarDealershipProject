@@ -1,10 +1,10 @@
 package com.CarDealership.Entity;
 
 public class User {
-	private String email, password, firstName, lastName, middleName; 
+	private String email, firstName, lastName, middleName; 
 	private int age; 
 	private Address address;
-	
+	private Car car; 
 	
 	public String getEmail() {
 		return email;
@@ -12,12 +12,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -49,5 +44,12 @@ public class User {
 		this.address = address;
 	} 
 	
+	public Car getCar() {
+		return car; 
+	}
+	
+	public void setCar(Car car) {
+		this.car = car; 
+	}
 	
 }

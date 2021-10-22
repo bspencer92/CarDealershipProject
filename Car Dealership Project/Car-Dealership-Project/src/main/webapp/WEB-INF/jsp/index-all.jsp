@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,10 +33,8 @@
 					<div class="col-sm-4 offset-md-1 py-4">
 						<h4 class="text-white">History and Services</h4>
 						<ul class="list-unstyled">
-							<li><a href="#" class="text-white">See all transactions</a></li>
-							<li><a href="#" class="text-white">Search inventory</a></li>
-							<li><a href="/sign-up" class="text-white">Create an
-									account to purchase a car</a></li>
+							<li><a href="/purchase-history" class="text-white">See all transactions</a></li>
+							<li><a href="/search" class="text-white">Search inventory</a></li>
 						</ul>
 					</div>
 				</div>
@@ -54,8 +52,7 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-currency-dollar"
 						viewBox="0 0 16 16">
-  <path
-							d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+  <path	d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
 </svg> <strong>Cars up for auction</strong>
 				</a>
 				<button class="navbar-toggler" type="button"
@@ -86,30 +83,33 @@
 		</section>
 		<!-- start of cards -->
 
-	<div class="album py-5 bg-light">
+		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					<c:forEach items="${carinventory}" var="carInventory">
-						<div class="col">
-							<div class="card shadow-sm">
-								<img src="${carInventory.imagePath}" alt="Image Not Found"
-									width="100%" height="225" />
+						<c:forEach items="${carinventory}" var="car">
+						
+							<div class="col">
+								<div class="card shadow-sm">
+									<img src="${car.imagePath}" alt="Image Not Found"
+										width="100%" height="225" />
+									
+										
+									<div class="card-body">
+										<p class="card-text">${car.description}</p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
 
-								<div class="card-body">
-									<p class="card-text">${carInventory.description}</p>
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="btn-group">
-											<a href="/selectedCar" ${carInventory.dealershipId} ><button type="button"
-												class="btn btn-sm btn-outline-secondary" >View</button></a>
-											<button type="button"
-												class="btn btn-sm btn-outline-secondary">Edit</button>
+											  <a  href="/selectedCar?dealershipId=${car.dealershipId}">
+													<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+												</a>
+											</div>
+											<small class="text-muted">9 mins</small>
 										</div>
-										<small class="text-muted">9 mins</small>
 									</div>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
+						
+					</c:forEach> 
 				</div>
 			</div>
 		</div>
